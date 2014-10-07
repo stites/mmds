@@ -18,7 +18,7 @@ def get_pagerank (b, n, M, iters, scale):
     
 
 
-# In[494]:
+# In[543]:
 
 # Q1
 r = get_pagerank(0.7,
@@ -39,7 +39,7 @@ print 'b + c = ', b + c
 print 'a + c = ', a + c
 
 
-# In[517]:
+# In[531]:
 
 #Q2
 r = get_pagerank(0.85,
@@ -50,7 +50,7 @@ r = get_pagerank(0.85,
                     [0.5,   1,   0]], dtype=np.float),
                  10000,
                  1)
-
+r = r / np.sum(r)
 a = r[0][0]
 b = r[1][0]
 c = r[2][0]
@@ -61,17 +61,26 @@ print 'c ', c
 
 print '      c = %0.3f b + %0.3f a' % (b/c, a/c)
 print '      b = %0.3f a + %0.3f c' % (a/b, c/b)
-print ' 0.95 b = %0.3f a + %0.3f c' % ((a/b)*0.95, (c/b)*0.95)
+print '0.950 b = %0.3f a + %0.3f c' % ((a/b)*0.95, (c/b)*0.95)
 print '%0.3f c =       b + %0.3f a' % (c/b, a/b)
 
 
 
-# In[498]:
+# In[548]:
+
+#Q3
+M = np.array([[  0,   0,   1],
+              [0.5,   0,   0],
+              [0.5,   1,   0]], dtype=np.float)
+
+print 'Options:'
+print '1: After iteration 5, a is 21/16 ->', get_pagerank(1, 3, M,    5, 1)[0][0] == (21.0/16)
+print '2: After iteration 4, b is  1/2  ->', get_pagerank(1, 3, M,    4, 1)[1][0] == ( 1.0/ 2)
+print '3: In the limit,      a is  5/4  ->', get_pagerank(1, 3, M, 1000, 1)[0][0] == ( 5.0/ 4)
+print '4: After iteration 5, b is  9/16 ->', get_pagerank(1, 3, M,    5, 1)[1][0] == ( 9.0/16)
 
 
+# In[546]:
 
-
-# In[491]:
-
-
+9.0/16
 
