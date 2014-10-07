@@ -77,7 +77,7 @@ print '3: In the limit,      a is  5/4  ->', get_pagerank(1, 3, M, 1000, 1)[0][0
 print '4: After iteration 5, b is  9/16 ->', get_pagerank(1, 3, M,    5, 1)[1][0] == ( 9.0/16)
 
 
-# In[565]:
+# In[567]:
 
 #Q4
 
@@ -102,7 +102,12 @@ def prime_factors_generate(n):
     prime_factors = filter(lambda x: n % x == 0, primes)
     return prime_factors
 
-t = prime_factors_generate(12)
-print t
+def map(n):
+    res = []
+    p_factors = prime_factors_generate(12)
+    for p in p_factors:
+        res.append( (p, n) )
+    return res
+
 
 
