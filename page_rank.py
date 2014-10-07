@@ -39,28 +39,10 @@ print 'b + c = ', b + c
 print 'a + c = ', a + c
 
 
-# In[552]:
+# In[595]:
 
 #Q2
-
-M = np.array([[  0,   0,   1],
-              [0.5,   0,   0],
-              [0.5,   1,   0]], dtype=np.float)
-r = get_pagerank(0.85, 3, M, 10000, 1)
-
-a = r[0][0]
-b = r[1][0]
-c = r[2][0]
-
-print 'note that: A = 0.1A + 0.1B + 0.1C'
-print '           B = 0.1A + 0.1B + 0.1C'
-print '           C = 0.1A + 0.1B + 0.1C\n'
-
-print '      c = %0.3f b + %0.3f a' % (b/c, a/c)
-print '      b = %0.3f a + %0.3f c' % (a/b, c/b)
-print '0.950 b = %0.3f a + %0.3f c' % ((a/b)*0.95, (c/b)*0.95)
-print '%0.3f c =       b + %0.3f a' % (c/b, a/b)
-
+#done by hand
 
 
 # In[548]:
