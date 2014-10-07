@@ -77,7 +77,7 @@ print '3: In the limit,      a is  5/4  ->', get_pagerank(1, 3, M, 1000, 1)[0][0
 print '4: After iteration 5, b is  9/16 ->', get_pagerank(1, 3, M,    5, 1)[1][0] == ( 9.0/16)
 
 
-# In[590]:
+# In[593]:
 
 #Q4
 
@@ -116,8 +116,20 @@ def agg(int_list):
             res[pair[0]] = [pair[1]]
     return res
 
+def reduce(dict):
+    res = []
+    for p in dict:
+        prime_sum = [p, 0]
+        for item in dict[p]:
+            prime_sum[1] += item
+        res.append( prime_sum )
+    return res
+
 allLists = agg([15, 21, 24, 30, 49])
-print allLists
+ans = reduce(allLists)
+
+for a in ans:
+    print a
 
 
 # In[589]:
