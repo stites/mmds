@@ -77,37 +77,50 @@ print '3: In the limit,      a is  5/4  ->', get_pagerank(1, 3, M, 1000, 1)[0][0
 print '4: After iteration 5, b is  9/16 ->', get_pagerank(1, 3, M,    5, 1)[1][0] == ( 9.0/16)
 
 
-# In[567]:
+# In[590]:
 
 #Q4
 
-# a sundaram seive:
-def sundaram3(max_n):
-    numbers = range(3, max_n+1, 2)
-    half = (max_n)//2
-    initial = 4
+# seive:
+def primes_sieve(limit):
+    a = [True] * limit
+    a[0] = a[1] = False
 
-    for step in xrange(3, max_n+1, 2):
-        for i in xrange(initial, half, step):
-            numbers[i-1] = 0
-        initial += 2*(step+1)
-
-        if initial > half:
-            return [2] + filter(None, numbers)
+    for (i, isprime) in enumerate(a):
+        if isprime:
+            yield i
+            for n in xrange(i*i, limit, i):
+                a[n] = False
 
 # filter primes
 def prime_factors_generate(n):
     # prepopulate primes (i'm lazy! i get it)
-    primes = sundaram3(1000)
+    primes = primes_sieve(1000)
     prime_factors = filter(lambda x: n % x == 0, primes)
     return prime_factors
 
 def map(n):
     res = []
-    p_factors = prime_factors_generate(12)
+    p_factors = prime_factors_generate(n)
     for p in p_factors:
         res.append( (p, n) )
     return res
+
+def agg(int_list):
+    res = {}
+    for num in int_list:
+       for pair in map(num):
+          if pair[0] in res:
+            res[pair[0]].append(pair[1])
+          else:
+            res[pair[0]] = [pair[1]]
+    return res
+
+allLists = agg([15, 21, 24, 30, 49])
+print allLists
+
+
+# In[589]:
 
 
 
