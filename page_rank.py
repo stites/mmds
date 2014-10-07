@@ -39,12 +39,34 @@ print 'b + c = ', b + c
 print 'a + c = ', a + c
 
 
-# In[484]:
+# In[517]:
+
+#Q2
+r = get_pagerank(0.85,
+                 3,
+                 np.array([
+                    [  0,   0,   1],
+                    [0.5,   0,   0],
+                    [0.5,   1,   0]], dtype=np.float),
+                 10000,
+                 1)
+
+a = r[0][0]
+b = r[1][0]
+c = r[2][0]
+
+print 'a ', a
+print 'b ', b
+print 'c ', c
+
+print '      c = %0.3f b + %0.3f a' % (b/c, a/c)
+print '      b = %0.3f a + %0.3f c' % (a/b, c/b)
+print ' 0.95 b = %0.3f a + %0.3f c' % ((a/b)*0.95, (c/b)*0.95)
+print '%0.3f c =       b + %0.3f a' % (c/b, a/b)
 
 
 
-
-# In[486]:
+# In[498]:
 
 
 
